@@ -1,0 +1,10 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.wareimage {
+    width: 300px;
+}
+.shop {
+    display: grid;
+    grid-template-columns: repeat(3,350px);
+}
