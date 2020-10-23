@@ -1,5 +1,9 @@
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+.wareitem {
+    margin: 20px 0px;
 }
 .wareimage {
     width: 300px;
@@ -7,4 +11,25 @@
 .shop {
     display: grid;
     grid-template-columns: repeat(3,350px);
+    margin: auto;
+    
+}
+.cartbox {
+    width: 200px;
+    height: 400px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 2px black;
+    margin-bottom: 10px;
+    position: fixed;
+    /* top: 0; */
+    z-index: 1;
+    background-color:lightgray;
+    display: inline-block;
+}
+.cartitem {
+    display: flex;
+    gap: 5px;
+}
+.cartitemimage {
+    width: 100px;
 }

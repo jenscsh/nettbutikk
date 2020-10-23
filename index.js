@@ -1,4 +1,5 @@
 const WAREOVERVIEW = document.querySelector(".shop");
+const CARTVIEW = document.querySelector(".cartbox");
 const WARES = [
     {
         name: "Skjerm",
@@ -45,6 +46,29 @@ WARES.forEach(item => {
         <img class="wareimage" src="${item.picture}" alt="">
         <h2 class="warename">${item.name}</h2>
         <h3 class="wareprice">${item.price},-</h3>
+        <button class="addtocart" onclick="AddToCart(${WARES.indexOf(item)})">Kjøp</button>
     </div>
     `
 });
+
+function AddToCart(id) {
+    
+    
+    let addedItem =`
+    <div class="cartitem" id="cartItem${id}">
+        <img class="cartitemimage" src="${WARES[id].picture}">
+        <h2 class="cartitemname">${WARES[id].name}</h2>
+        <h3 class="cartitemprice">${WARES[id].price},-</h3>
+        <p>Antall: 1</p>
+        <button class="removefromcart" onclick="RemoveFromCart(${id})">Fjern</button>
+    </div>
+    `;
+    CARTVIEW.innerHTML+= addedItem;
+}
+function RemoveFromCart(toRemove) {
+    console.log(document.getElementById("cartItem"+toRemove));
+    CARTVIEW.removeChild(document.getElementById("cartItem"+toRemove));
+}
+// function UpdateTotalPrice () {
+//     CARTVIEW.
+// }
