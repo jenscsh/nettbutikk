@@ -8,8 +8,28 @@
     <script src="index.js" defer></script>
 </head>
 <body>
-    <article class="shop"></article>
-    <div class="sidebar"></div>
-    <div class="cartbox"></div>
+    <nav id="topbar">
+        <img id="carticon" onclick="OpenCloseCart()" src="./images/shopping-cart.png" alt="">
+        <div class="cartbox" style="display: none;">
+            <h3>Handlekurv</h3>
+            <article class="cartboxlist"></article>
+            <p class="totalprice">Her er det foreløpig ingenting.</p>
+        </div>
+    </nav>
+    <div class="panel">
+        <nav class="sidebar">
+            <h3>Filter</h3>
+            <input type="checkbox" id="datafilter" value="Datautstyr" class="filteroption" onclick="FilterWares()"></input>
+            <label for="datafilter">Datautstyr</label>
+            <input type="checkbox" id="hvitefilter" value="Hvitevarer" class="filteroption" onclick="FilterWares()"></input>
+            <label for="hvitefilter">Hvitevarer</label>
+            <input type="checkbox" id="telefilter" value="Telefon og nettbrett" class="filteroption" onclick="FilterWares()"></input>
+            <label for="telefilter">Telefon og nettbrett</label>
+            <input type="checkbox" id="lbfilter" value="Lyd og bilde" class="filteroption" onclick="FilterWares()"></input>
+            <label for="lbfilter">Lyd og bilde</label>
+        </nav>
+        <article class="shop"></article>
+    </div>
+    
 </body>
 </html>

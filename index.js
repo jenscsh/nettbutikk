@@ -1,5 +1,8 @@
 const WAREOVERVIEW = document.querySelector(".shop");
 const CARTVIEW = document.querySelector(".cartbox");
+const CARTVIEWLIST =document.querySelector(".cartboxlist");
+const TOTALPRICEVIEW = document.querySelector(".totalprice");
+const FILTEROPTIONS =document.querySelectorAll(".filteroption");
 const WARES = [
     {
         name: "Skjerm",
@@ -50,25 +53,52 @@ WARES.forEach(item => {
     </div>
     `
 });
-
+function FilterWares () {
+    WAREOVERVIEW.innerHTML="";
+    let waresToAdd = [];
+    FILTEROPTIONS.forEach(filter=> {
+        if (filter.checked==true) {
+            waresToAdd+=WARES.filter(category === filter.value);
+        }
+    })
+}
+function OpenCloseCart() {
+    if(CARTVIEW.style.display==='none') {
+        CARTVIEW.style.display='block';
+    } else {
+        CARTVIEW.style.display='none';
+    }
+}
 function AddToCart(id) {
-    
-    
-    let addedItem =`
-    <div class="cartitem" id="cartItem${id}">
-        <img class="cartitemimage" src="${WARES[id].picture}">
-        <h2 class="cartitemname">${WARES[id].name}</h2>
-        <h3 class="cartitemprice">${WARES[id].price},-</h3>
-        <p>Antall: 1</p>
-        <button class="removefromcart" onclick="RemoveFromCart(${id})">Fjern</button>
-    </div>
-    `;
-    CARTVIEW.innerHTML+= addedItem;
+    if (cart.includes(WARES[id])) {
+        console.log("Already exist");
+    } else {
+        cart.push(WARES[id]);
+        let addedItem =`
+        <div class="cartitem" id="cartItem${id}">
+            <img class="cartitemimage" src="${WARES[id].picture}">
+            <h2 class="cartitemname">${WARES[id].name}</h2>
+            <h3 class="cartitemprice">${WARES[id].price},-</h3>
+            <button class="removefromcart" onclick="RemoveFromCart(${id})">Fjern</button>
+        </div>
+        `;
+    CARTVIEWLIST.innerHTML+= addedItem;
+    }
+    UpdateTotalPrice();
 }
 function RemoveFromCart(toRemove) {
-    console.log(document.getElementById("cartItem"+toRemove));
-    CARTVIEW.removeChild(document.getElementById("cartItem"+toRemove));
+    cart.pop(WARES[toRemove]);
+    CARTVIEWLIST.removeChild(document.getElementById("cartItem"+toRemove));
+    UpdateTotalPrice();
 }
-// function UpdateTotalPrice () {
-//     CARTVIEW.
-// }
+function UpdateTotalPrice () {
+    if (cart.length===0) {
+        TOTALPRICEVIEW.textContent="Her er det foreløpig ingenting.";
+    } else {
+        let total=0;
+        cart.forEach(item=> {
+            total+=item.price;
+        })
+        TOTALPRICEVIEW.textContent=`Total pris: ${total},-`;
+    }
+}
