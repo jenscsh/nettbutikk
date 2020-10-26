@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <script src="index.js" defer></script>
 </head>
+<!-- Refleksjonsnotat kan leses i README.md -->
 <body>
     <nav id="topbar">
         <img id="carticon" onclick="OpenCloseCart()" src="./images/shopping-cart.png" alt="">
@@ -16,20 +17,23 @@
             <p class="totalprice">Her er det foreløpig ingenting.</p>
         </div>
     </nav>
+    <button class="filterbutton" onclick="OpenCloseFilters()"><b>Vis filter</b></button>
     <div class="panel">
         <nav class="sidebar">
             <h3>Filter</h3>
-            <input type="checkbox" id="datafilter" value="Datautstyr" class="filteroption" onclick="FilterWares()"></input>
-            <label for="datafilter">Datautstyr</label>
-            <input type="checkbox" id="hvitefilter" value="Hvitevarer" class="filteroption" onclick="FilterWares()"></input>
-            <label for="hvitefilter">Hvitevarer</label>
-            <input type="checkbox" id="telefilter" value="Telefon og nettbrett" class="filteroption" onclick="FilterWares()"></input>
-            <label for="telefilter">Telefon og nettbrett</label>
-            <input type="checkbox" id="lbfilter" value="Lyd og bilde" class="filteroption" onclick="FilterWares()"></input>
-            <label for="lbfilter">Lyd og bilde</label>
+            <form action="" class="filterchoices">
+                <input type="checkbox" id="datafilter" value="Datautstyr" class="filteroption" onclick="FilterWares()"></input>
+                <label for="datafilter">Datautstyr</label>
+                <input type="checkbox" id="hvitefilter" value="Hvitevarer" class="filteroption" onclick="FilterWares()"></input>
+                <label for="hvitefilter">Hvitevarer</label>
+                <input type="checkbox" id="telefilter" value="Telefon og nettbrett" class="filteroption" onclick="FilterWares()"></input>
+                <label for="telefilter">Telefon og nettbrett</label>
+                <input type="checkbox" id="lbfilter" value="Lyd og bilde" class="filteroption" onclick="FilterWares()"></input>
+                <label for="lbfilter">Lyd og bilde</label>
+            </form>
+            <!-- <button class="filterbutton" onclick="OpenCloseFilters()"><b>Vis filter</b></button> -->
         </nav>
         <article class="shop"></article>
     </div>
-    
 </body>
 </html>

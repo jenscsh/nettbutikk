@@ -2,30 +2,51 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
 }
+button {
+    background-color: lemonchiffon;
+}
+h3 {
+    margin: 5px;
+}
+.addtocart, .removefromcart {
+    position: absolute;
+}
+.addtocart {
+    right: 5px;
+    bottom: 5px;
+    font-size: 1.2em;
+}
+.removefromcart {
+    right: 5px;
+    bottom: 20%;
+}
 .wareitem {
-    margin: 1em 0px;
+    margin: 1em 0;
+    position: relative;
+    background-color: lightblue;
 }
 .wareimage {
     width: 300px;
+    max-height: 200px;
+    object-fit: contain;
 }
 .shop {
-    display: grid;
-    grid-template-columns: repeat(3,350px);
+    display: flex;
+    flex-wrap: wrap;
+    align-content:flex-start;
+    justify-content: space-evenly;
+    gap: 3rem;
+    max-width: 1000px;
 }
 #topbar {
-    width: 100%;
+    width: 100vw;
     height: 7vh;
     display: block;
     background-color: lightseagreen;
 }
 .filteroption {
     display: block;
-}
-input {
-    display: inline-block;
-}
-label {
-    display: inline-block;
+    align-self: center;
 }
 #carticon {
     position: absolute;
@@ -34,32 +55,75 @@ label {
     height: 5%;
 }
 .cartbox {
-    width: 200px;
-    height: 400px;
+    max-width: 300px;
+    height: auto;
     border: 1px solid black;
     box-shadow: 1px 1px 2px black;
     margin-bottom: 10px;
     position: absolute;
     top: 7vh;
-    right: 10px;
+    right: 0px;
     z-index: 1;
     background-color:lightgray;
 }
 .cartitem {
     display: flex;
+    flex-wrap: wrap;
+    position: relative;
     gap: 5px;
+    background-color: white;
+    align-items: center;
+    width: 100%;
+}
+.totalprice {
+    margin: 5px;
+}
+.cartitemname {
+    width: 100%;
 }
 .cartitemimage {
     width: 100px;
+    max-height: 50px;
+    object-fit: contain;
+}
+.removefromclass {
+    align-self: flex-end;
+}
+.filterbutton {
+    display: none;
 }
 .sidebar {
     width: 15vw;
     height: 90vh;
     margin: 1em 1em;
     background-color: lightgreen;
+    transition: 0.2s;
+}
+.filterchoices {
+    display: grid;
+    grid-template-columns: 1em 100%;
+    grid-template-rows: repeat(4,1fr);
+    gap: 5px;
+    margin: 5px;
 }
 .panel {
     display: flex;
     margin: auto;
-    position: fixed;
+    width: 100%;
+}
+/* Mobilmodus */
+@media (max-width: 900px) {
+    .sidebar {
+        width: 100vw;
+        position: absolute;
+        z-index: 2;
+        left: -100vw;
+        margin: 0;
+    }
+    .filterbutton {
+        display: block;
+        margin: 5px auto;
+        font-size: 1.5em;
+        width: 90%;
+    }
 }
