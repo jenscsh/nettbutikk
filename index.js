@@ -6,6 +6,7 @@ const TOTALPRICEVIEW = document.querySelector(".totalprice");
 const FILTEROPTIONS =document.querySelectorAll(".filteroption");
 const SIDEBAR = document.querySelector(".sidebar");
 const FILTERBTNS = document.querySelectorAll(".filterbutton");
+const NULLRESULT = document.querySelector("#nullresult");
 //De tilgjengelige varene.
 const WARES = [
     {
@@ -44,10 +45,17 @@ const WARES = [
         category: "Lyd og bilde",
         picture: "./images/speaker.webp"
     }
-]
+];
 
-//Handlevognen
+//Handlevognen og søkeord
 let cart = [];
+let searchTerm = "";
+
+//Endrer på searchTerm hver gang søkefeltet endres i nettleser
+document.getElementById("prodsearch").addEventListener("input",(e)=>{
+    searchTerm=e.target.value;
+    FilterWares();
+});
 
 //Funksjon for å standard varelisting uten filter. Kjører når siden blir lastet inn.
 DefaultFill();
@@ -64,17 +72,23 @@ function DefaultFill() {
     });
 }
 
-//Funksjon for å filtrere varer. Kjører når noen trykker på filterboksene.
+//Funksjon for å filtrere varer etter filter og søkeord. Kjører når noen trykker på filterboksene eller skriver i søkefeltet.
 function FilterWares () {
     //Tømmer eksisterende varelisting. Legger til varer til array hvis kategori passer.
     WAREOVERVIEW.innerHTML="";
     var waresToAdd = [];
+    NULLRESULT.style.display = "none";
     FILTEROPTIONS.forEach(filter=> {
         if (filter.checked==true) {
             waresToAdd.push(...WARES.filter(item=>item.category==filter.value));
         }
     });
-    //Legger til filtrerte varer til vareoversikt. Hvis det er ingen kjører standard varelisting.
+    //Filtrer bare det som passer med søkeresultatet
+    if (searchTerm!="") {
+        if (waresToAdd.length>0) waresToAdd = waresToAdd.filter(ware=>MatchSearch(ware.name));
+        else waresToAdd = WARES.filter(ware=>MatchSearch(ware.name));
+    }
+    //Legger til filtrerte varer til vareoversikt. Hvis det er ingen og det er ingen søkeord, kjører standard varelisting.
     waresToAdd.forEach(ware => {
         WAREOVERVIEW.innerHTML+= `
         <div class="wareitem">
@@ -85,7 +99,15 @@ function FilterWares () {
         </div>
         `
     });
-    if (waresToAdd.length===0) DefaultFill();
+    if (waresToAdd.length===0) {
+        if (searchTerm!="") NULLRESULT.style.display = "block";
+        else DefaultFill();
+    }
+}
+//Sjekker om navnet inneholder søkeordet
+function MatchSearch (name) {
+    name=name.toLowerCase();
+    return name.includes(searchTerm.toLowerCase());
 }
 //Åpner/lukker handlekurv.
 function OpenCloseCart() {

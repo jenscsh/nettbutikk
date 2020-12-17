@@ -10,6 +10,7 @@
 <!-- Refleksjonsnotat kan leses i README.md -->
 <body>
     <nav id="topbar">
+        <input type="text" placeholder="Søk" name="prod-search" id="prodsearch">
         <img id="carticon" onclick="OpenCloseCart()" src="./images/shopping-cart.png" alt="">
         <div class="cartbox" style="display: none;">
             <h3>Handlekurv</h3>
@@ -18,6 +19,7 @@
         </div>
     </nav>
     <button class="filterbutton" onclick="OpenCloseFilters()"><b>Vis filter</b></button>
+    <p id="nullresult">Beklager, vi fant ikke det du letet etter</p>
     <div class="panel">
         <nav class="sidebar">
             <h3>Filter</h3>

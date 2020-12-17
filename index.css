@@ -41,8 +41,14 @@ h3 {
 #topbar {
     width: 100vw;
     height: 7vh;
-    display: block;
     background-color: lightseagreen;
+    position: relative;
+}
+#prodsearch {
+    position: absolute;
+    height: 85%;
+    max-width: 60vw;
+    font-size: 1.5em;
 }
 .filteroption {
     display: block;
@@ -50,9 +56,9 @@ h3 {
 }
 #carticon {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 1vh;
-    height: 5%;
+    height: 80%;
 }
 .cartbox {
     max-width: 300px;
@@ -74,6 +80,11 @@ h3 {
     background-color: white;
     align-items: center;
     width: 100%;
+}
+#nullresult {
+    background-color: lightcoral;
+    text-align: center;
+    display: none;
 }
 .totalprice {
     margin: 5px;
