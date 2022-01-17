@@ -1,6 +1,3 @@
-Det har skjedd en del i det siste som gjør at jeg ikke fikk jobbet så mye med oppgaven som jeg skulle.
-Derfor blir den levert litt på etterskudd, håper det går greit denne gangen.
-
 Nettbutikken har seks forskjellige produkter med navn, pris, kategori og bildelink, som er lagret i en array. Ved å trykke på "kjøp"
 kan man legge til varer i handlekurven, som man også kan få frem ved å trykke på handlekurv-ikonet. Det er ikke mulig å legge til
 mer enn en av samme vare.
